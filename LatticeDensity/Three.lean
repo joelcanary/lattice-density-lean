@@ -55,7 +55,7 @@ theorem N_eq (S : Set Cell) (i j : ℤ) :
   have hset : {y : Cell | y ∈ S ∧ y ≠ (i, j) ∧ |y.1 - i| ≤ 1 ∧ |y.2 - j| ≤ 1} =
       ((offs.filter fun p => ((i, j) : Cell) + p ∈ S).image fun p => ((i, j) : Cell) + p : Finset Cell) := by
     ext y
-    simp only [Set.mem_setOf_eq, Finset.coe_image, Set.mem_image, Finset.mem_coe, Finset.mem_filter, mem_offs]
+    simp only [Set.mem_ofPred_eq, Finset.coe_image, Set.mem_image, Finset.mem_coe, Finset.mem_filter, mem_offs]
     constructor
     · rintro ⟨h1, h2, h3, h4⟩
       refine ⟨y - (i, j), ⟨⟨sub_ne_zero.mpr h2, h3, h4⟩, ?_⟩, ?_⟩ <;> simp [h1]
@@ -207,7 +207,7 @@ theorem box_eq (r : ℕ) (hr : 1 ≤ r) :
     box r = Set.Ico (-(r : ℤ) + 1) (-(r : ℤ) + 1 + (2 * r - 1 : ℕ)) ×ˢ
       Set.Ico (-(r : ℤ) + 1) (-(r : ℤ) + 1 + (2 * r - 1 : ℕ)) := by
   ext x
-  simp only [box, Set.mem_setOf_eq, Set.mem_prod, Set.mem_Ico, abs_lt]
+  simp only [box, Set.mem_ofPred_eq, Set.mem_prod, Set.mem_Ico, abs_lt]
   omega
 
 theorem ncard_box (r : ℕ) (hr : 1 ≤ r) : (box r).ncard = (2 * r - 1) * (2 * r - 1) := by
@@ -290,7 +290,7 @@ theorem N_rows_le : ∀ x ∈ rows, N rows x ≤ 3 := by
 /-- Alternate rows are a still Life. -/
 theorem life_rows : life rows = rows := by
   ext ⟨i, j⟩
-  simp only [life, Set.mem_setOf_eq, N_rows, mem_rows]
+  simp only [life, Set.mem_ofPred_eq, N_rows, mem_rows]
   by_cases h : 2 ∣ i <;> simp [h]
 
 theorem sum_even (a : ℤ) (m : ℕ) :
