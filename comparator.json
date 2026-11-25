@@ -1,0 +1,15 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "LatticeDensity.isGreatest_upperDensity_three",
+    "LatticeDensity.isGreatest_upperDensity_stillLife",
+    "LatticeDensity.isGreatest_upperDensity_four",
+    "LatticeDensity.isGreatest_upperDensity_five"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

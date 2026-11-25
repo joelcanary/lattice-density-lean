@@ -1,0 +1,161 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+
+version: "v0.4"
+
+project:
+  name: "The greatest density of a set in the square lattice whose points have at most three, four or five neighbours"
+  description: >-
+    A point of the square lattice has eight neighbours. Let delta(n) be the greatest upper density of a set S such
+    that every point of S has at most n neighbours in S. Elkies introduced delta(n) and proved delta(3) = 1/2, which
+    implies that no still Life of Conway's Game of Life has density greater than 1/2 (the still-Life conjecture).
+    Ionascu, Pritikin and Wright studied the limit of the densities of n-dependent sets in finite kings graphs and
+    conjectured the values 3/5 and 9/13 for n = 4 and n = 5, with upper bounds 0.608956 and 0.693943. This project
+    proves delta(3) = 1/2, the same for still Lifes, delta(4) = 3/5 and delta(5) = 9/13, each as the greatest element
+    of the set of upper densities. For n = 3 the proof is the one of Chu and Stuckey. For n = 4 and n = 5 the upper
+    bound is an inequality in windows of four or three rows of five cells with two functions whose contributions
+    telescope; the functions are given by tables, and the kernel checks the inequality in every window. Elkies reports
+    that M. Moore announced delta(5) = 9/13 in 1995. We have not found a published proof for n = 4 or n = 5; whether
+    these two results are new is unknown to us.
+  authors:
+    - "Joel Cruz Cabrera"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Joel Cruz Cabrera"
+
+sources:
+  - title: "The still-Life density problem and its generalizations"
+    authors:
+      - "Noam D. Elkies"
+    id: "https://arxiv.org/abs/math/9905194"
+    type: "paper"
+    location: >-
+      Section 1 (definitions of neighbours, density and delta(n), and the still-Life conjecture), Section 3 (the
+      announcement by M. Moore) and the Theorem of Section 4 (delta(3) = 1/2).
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      The definitions and the statements for n = 3 and for still Lifes are from this paper. The proof here is another
+      one.
+  - title: "A complete solution to the Maximum Density Still Life Problem"
+    authors:
+      - "Geoffrey Chu"
+      - "Peter J. Stuckey"
+    id: "https://doi.org/10.1016/j.artint.2012.02.001"
+    type: "paper"
+    location: "Theorem 1 and its proof."
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      The redistribution of tokens used here for n = 3 is the one of this paper. The linear program that we used
+      produced it independently, before we read the paper.
+  - title: "k-Dependence and Domination in Kings Graphs"
+    authors:
+      - "Eugen J. Ionascu"
+      - "Dan Pritikin"
+      - "Stephen E. Wright"
+    id: "https://arxiv.org/abs/math/0608140"
+    type: "paper"
+    location: >-
+      The introduction and Theorem 4 (bounds for k = 4 and k = 5, and the conjecture that the values are 3/5 and 9/13).
+      Published in Amer. Math. Monthly 115 (2008), 820-836.
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      We read the arXiv version. The paper deals with the limit of finite boards; here the statement is about upper
+      densities of sets in the whole lattice. The patterns of density 3/5 and 9/13 were already known.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C69"
+    - "52C20"
+    - "68V20"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "Claude Opus 5.5"
+      framework: "Claude Code"
+  notes: >-
+    Claude Code proposed the problem, wrote the linear programs that found the functions, searched the literature,
+    wrote all of the Lean code and drafted these metadata. The human author directed the work and is responsible for
+    the submission.
+
+review:
+  status: "unchecked"
+  notes: >-
+    No separate human review of the Lean code has been made before submission. Mechanical checks: a build without
+    warnings other than the placeholders of Challenge.lean, the axioms of the four results are propext,
+    Classical.choice and Quot.sound, and a separate program outside Lean checked the inequalities in every window.
+
+status:
+  scope: >-
+    The values for n = 3, 4 and 5 and for still Lifes. The values for n = 0, 1, 2, 6, 7 and 8, which are in the papers
+    cited, are not treated.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - description: "The greatest upper density of a set whose points have at most three neighbours in it is 1/2."
+      declaration: "LatticeDensity.isGreatest_upperDensity_three"
+      file: "LatticeDensity/Three.lean"
+      comparator_config: "comparator.json"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - description: "The greatest upper density of a still Life is 1/2."
+      declaration: "LatticeDensity.isGreatest_upperDensity_stillLife"
+      file: "LatticeDensity/Three.lean"
+      comparator_config: "comparator.json"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - description: "The greatest upper density of a set whose points have at most four neighbours in it is 3/5."
+      declaration: "LatticeDensity.isGreatest_upperDensity_four"
+      file: "LatticeDensity/Four.lean"
+      comparator_config: "comparator.json"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - description: "The greatest upper density of a set whose points have at most five neighbours in it is 9/13."
+      declaration: "LatticeDensity.isGreatest_upperDensity_five"
+      file: "LatticeDensity/Five.lean"
+      comparator_config: "comparator.json"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+
+fidelity:
+  notes: >-
+    The neighbours are the eight lattice points closest to a point, and the upper density is the limit superior of the
+    proportion of the box of the points with both coordinates less than r in absolute value, as in Section 1 of
+    Elkies's paper. The value for r = 0 is 0/0 = 0 and does not matter for the limit. A still Life is a fixed set of
+    Conway's rule B3/S23, finite or not. The correspondence with the finite boards of Ionascu, Pritikin and Wright is
+    not formalized.
+
+alignment:
+  namespaces:
+    - "LatticeDensity"
+  statements:
+    - source: "arXiv:math/9905194, Theorem of Section 4: delta(3) = 1/2"
+      lean: "LatticeDensity.isGreatest_upperDensity_three"
+      module: "Solution"
+      status: "proved"
+    - source: "arXiv:math/9905194, Section 1: the still-Life conjecture, with the example that attains the bound"
+      lean: "LatticeDensity.isGreatest_upperDensity_stillLife"
+      module: "Solution"
+      status: "proved"
+    - source: "arXiv:math/0608140, the conjectured value 3/5 for k = 4, for sets in the whole lattice"
+      lean: "LatticeDensity.isGreatest_upperDensity_four"
+      module: "Solution"
+      status: "proved"
+    - source: "arXiv:math/0608140, the conjectured value 9/13 for k = 5, for sets in the whole lattice"
+      lean: "LatticeDensity.isGreatest_upperDensity_five"
+      module: "Solution"
+      status: "proved"
+
+acknowledgements: >-
+  Thanks to the authors of Lean 4 and Mathlib.
