@@ -30,7 +30,8 @@ please open an issue.
 ## The proof
 
 For `n = 3` each live point sends tokens to its orthogonal neighbours, as in Chu and Stuckey. For `n = 4` and `n = 5` the upper bound is
-a linear-programming form of the discharging method, as in Stolee's *Automated discharging arguments for density problems in grids*.
+a linear-programming form of the discharging method, as in Stolee's
+*Automated Discharging Arguments for Density Problems in Grids* ([arXiv:1409.5922](https://arxiv.org/abs/1409.5922)).
 In every window of four rows of five cells (`n = 4`) or three rows of five cells (`n = 5`), the number of points, plus `f` of the left
 part minus `f` of the right part, plus `g` of the upper part minus `g` of the lower part, is at most 12 (`n = 4`) or 135/13 (`n = 5`),
 where `f` and `g` are two fixed functions. Summing over all the windows in a large box, the terms with `f` and `g` telescope.

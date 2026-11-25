@@ -58,11 +58,22 @@ sources:
     location: >-
       The introduction and Theorem 4 (bounds for k = 4 and k = 5, and the conjecture that the values are 3/5 and 9/13).
       Published in Amer. Math. Monthly 115 (2008), 820-836.
-    relationship: "independently-proves"
+    relationship: "other"
     author_endorsement: "not-contacted"
     note: >-
-      We read the arXiv version. The paper deals with the limit of finite boards; here the statement is about upper
-      densities of sets in the whole lattice. The patterns of density 3/5 and 9/13 were already known.
+      The paper conjectures the values 3/5 and 9/13 and proves bounds, for the limit of finite boards; it does not prove
+      them. The statements proved here are about upper densities of sets in the whole lattice. The patterns of density
+      3/5 and 9/13 were already known. We read the arXiv version.
+  - title: "Automated Discharging Arguments for Density Problems in Grids"
+    authors:
+      - "Derrick Stolee"
+    id: "https://arxiv.org/abs/1409.5922"
+    type: "paper"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The use of linear programming to find discharging arguments for densities in grids. The functions used here were
+      found with our own linear programs.
 
 related_formalizations: []
 
