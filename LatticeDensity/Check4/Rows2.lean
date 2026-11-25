@@ -16,7 +16,7 @@ limitations under the License.
 
 module
 
-public import LatticeDensity.Check4.Table
+public import LatticeDensity.Check4.Rows1
 
 /-!
 # The rows 16 to 23 of the check for at most four neighbours

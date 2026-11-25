@@ -77,8 +77,8 @@ theorem ok5 {S : Set Cell} (h : ∀ x ∈ S, N S x ≤ 5) (i j : ℤ) :
 /-- If every point of `S` has at most five neighbours in `S`, then `S` has upper density at most `9/13`. -/
 theorem upperDensity_le_five (S : Set Cell) (h : ∀ x ∈ S, N S x ≤ 5) : upperDensity S ≤ 9 / 13 := by
   have key := upperDensity_le_of_local S 3 5 52 540 512 (by norm_num)
-    (fun i j => (Check5.fv (row4 S i j + 16 * row4 S (i + 1) j + 256 * row4 S (i + 2) j) : ℤ))
-    (fun i j => (Check5.gv (row5 S i j + 32 * row5 S (i + 1) j) : ℤ))
+    (fun i j => (Check5.fv (row4 S i j) (row4 S (i + 1) j) (row4 S (i + 2) j) : ℤ))
+    (fun i j => (Check5.gv (row5 S i j) (row5 S (i + 1) j) : ℤ))
     (fun i j => ⟨by positivity, by unfold Check5.fv; omega⟩) (fun i j => ⟨by positivity, by unfold Check5.gv; omega⟩) ?_
   · refine key.trans (le_of_eq ?_); norm_num
   · intro i j

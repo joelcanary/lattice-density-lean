@@ -303,10 +303,10 @@ theorem sum_even (a : ℤ) (m : ℕ) :
     push_cast
     by_cases h : (2 : ℤ) ∣ a + m
     · have h' : ¬ (2 : ℤ) ∣ a + (m + 1) := by omega
-      simp only [h, h', if_true, if_false] at ih ⊢
+      simp only [h, h', ite_true, ite_false] at ih ⊢
       omega
     · have h' : (2 : ℤ) ∣ a + (m + 1) := by omega
-      simp only [h, h', if_true, if_false] at ih ⊢
+      simp only [h, h', ite_true, ite_false] at ih ⊢
       omega
 
 theorem le_ratio_rows (r : ℕ) (hr : 1 ≤ r) : 1 / 2 - 1 / (2 * (r : ℝ) - 1) ≤ ratio rows r := by

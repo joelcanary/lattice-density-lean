@@ -77,8 +77,8 @@ theorem ok4 {S : Set Cell} (h : ∀ x ∈ S, N S x ≤ 4) (i j : ℤ) :
 /-- If every point of `S` has at most four neighbours in `S`, then `S` has upper density at most `3/5`. -/
 theorem upperDensity_le_four (S : Set Cell) (h : ∀ x ∈ S, N S x ≤ 4) : upperDensity S ≤ 3 / 5 := by
   have key := upperDensity_le_of_local S 4 5 52 624 512 (by norm_num)
-    (fun i j => (Check4.fv (row4 S i j + 16 * row4 S (i + 1) j + 256 * row4 S (i + 2) j + 4096 * row4 S (i + 3) j) : ℤ))
-    (fun i j => (Check4.gv (row5 S i j + 32 * row5 S (i + 1) j + 1024 * row5 S (i + 2) j) : ℤ))
+    (fun i j => (Check4.fv (row4 S i j) (row4 S (i + 1) j) (row4 S (i + 2) j) (row4 S (i + 3) j) : ℤ))
+    (fun i j => (Check4.gv (row5 S i j) (row5 S (i + 1) j) (row5 S (i + 2) j) : ℤ))
     (fun i j => ⟨by positivity, by unfold Check4.fv; omega⟩) (fun i j => ⟨by positivity, by unfold Check4.gv; omega⟩) ?_
   · refine key.trans (le_of_eq ?_); norm_num
   · intro i j

@@ -16,9 +16,6 @@ limitations under the License.
 
 module
 
-public import LatticeDensity.Check4.Rows0
-public import LatticeDensity.Check4.Rows1
-public import LatticeDensity.Check4.Rows2
 public import LatticeDensity.Check4.Rows3
 
 /-!
