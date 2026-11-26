@@ -13,6 +13,9 @@ neighbours in `S`. This project proves in Lean 4 that `δ(3) = 1/2`, `δ(4) = 3/
 Each one says that no set exceeds the value and that some set attains it. All use only the axioms `propext`, `Classical.choice` and
 `Quot.sound`; there is no `native_decide`.
 
+Registered in Palomar as [PALOMAR-2026-11-26-000025](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-26-000025)
+(commit `1b031db3`, Lean and Mathlib 4.35.0).
+
 ## What was known
 
 * Elkies ([arXiv:math/9905194](https://arxiv.org/abs/math/9905194)) introduced `δ(n)` and proved `δ(3) = 1/2`, which is the still-Life
